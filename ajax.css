@@ -1,0 +1,1485 @@
+/* Project:		gtkDecorator
+ * Version:		2.6.4
+ * Author:		Grzegorz Petri
+ * Contact:		gpetri13@gmail.com
+ * Descripton:	Based on GTK3 UI, sets of ready-to-use classes for node Containers, form Controls and site Layout-sets
+ */
+ html {
+	font-size: 16px !important;
+}
+body {
+	margin: 0px;
+	font-family: Lato, Verdana, DejaVu Sans;
+	font-size: 10px;
+}
+p, h1, h2, h3, h4, h5, h6 {
+	margin: 0px;
+}
+.gtkVersion:after {
+	content: '2.6.4';
+}
+.gtkCompleteTest {
+	width: var(--finished-color);
+	background-color: red;
+}
+.gtkComplete > hr {	width: 10%; }
+.gtkComplete > hr + div:after {	content: '10'; }
+	/* 7.3: (done.length*100)/ds = dt.length-dd.length */
+.gtkWindow {
+	background-color: #e5e8e7;/*c3c6c5;*/
+	border: 1px solid #808080;
+	border-radius: 10px;
+/*display: block;
+float: left;*/
+	font-size: 1rem;
+	margin: 0.5rem;
+	padding: 0.5rem;
+/*width: auto;*/
+}
+.gtkWindow:after, .gtkBox:after, .gtkSideBar:after {
+   content: " "; /* Older browser do not support empty content */
+   visibility: hidden;
+   display: block;
+   height: 0;
+   clear: both;
+}
+.gtkHeaderBar {
+	background-color: #e5e8e7;
+	background-image: linear-gradient( 180deg, #f4f4f4 90%, #dbdbd9 100% );
+	border-top: 1px solid #fff;
+	border-bottom: 1px solid #91918c;
+	border-radius: 0.9rem 0.9rem 0px 0px;
+	/*box-shadow: 0px 1px 1px #808080;*/
+	text-align: center;
+	min-height: 2rem;
+	padding: 0.4rem 0.5rem;
+}
+.gtkWindow > *:last-child {
+	/*border-radius: 10px;*/
+	margin-bottom: 0.8rem;
+}
+.gtkHeaderBar h2 {
+	color: #000;
+	font-size: 1.1rem;
+	line-height: 1.2rem;
+	margin: 0px;
+}
+.gtkHeaderBar h2 + p {
+	color: #808080;
+	font-size: 0.7rem;
+	line-height: 0.8rem;
+	padding: 0px;
+	text-align: center;
+}
+.gtkHeaderBar .putLeft {
+	max-width: 45%;
+}
+.gtkHeaderBar .putLeft h2 {
+	display: inline;
+	line-height: 1.0rem;
+}
+.gtkBox {
+	/*background-color: #e5e8e7;*/
+	display: block;
+	margin: 0px;/*.8rem;*/
+}
+.gtkInBox {
+	display: inline-block;
+	margin: 0px;
+}
+.gtkPaned {
+	margin: 0px;
+	margin-bottom: 0px !important;
+}
+.gtkPaned .gtkPane1, .gtkPaned .gtkPane2 {
+	outline: solid 1px #a7aba7;
+}
+.gtkPaned .gtkPaneGrab {
+	color: #808080;
+	cursor: no-drop;
+	font-size: 1rem;
+	text-align: center;
+}
+.gtkPaned.horizontal .gtkPane1, .gtkPaned.horizontal .gtkPane2 {
+	display: inline-block;
+	width: 47%;
+}
+.gtkPaned.horizontal .gtkPane1 {
+}
+.gtkPaned.horizontal .gtkPane2 {
+}
+.gtkPaned.horizontal .gtkPaneGrab {
+	display: inline-block;
+	width: 16px;
+}
+.gtkPaned.horizontal .gtkPaneGrab:after {
+	content: 'âŽ';/* &vellip;*/
+}
+.gtkPaned.horizontal .gtkPaneGrab.resizable {	cursor: col-resize; }
+.gtkPaned.vertical .gtkPaneGrab.resizable {		cursor: col-resize; }
+.gtkPaned.vertical .gtkPaneGrab {	line-height: 0.8rem; }
+.gtkPaned.vertical .gtkPaneGrab:after {	content: 'âŻ';/*&ctdot;*/ }
+/* ### ### ### ### ### */
+/* InfoBAR && ActionBAR */
+/* ### ### ### ### ### */
+.gtkActionBar {
+	background: #EDEDED;/*D9D9D7;*/
+	border-top: 0px solid #a1a1a1;/*c7c7c4;*/
+	border-bottom: 1px solid #a1a1a1;/*c2c2c0;*/
+	font-size: 1.0rem;
+	padding: 0.35rem 0.5rem;
+	margin-top: 0px;
+	text-align: center;
+	line-height: 1.8rem;
+	height: auto;
+	/* margin-bottom: 0.5rem;
+	* width: 100%;*/
+}
+.gtkInfoBar {
+	background: #c3c6c5;
+	border-bottom: 1px solid #a7aba7;
+	font-size: 1.0rem;
+	padding: 0.35rem 0.5rem;
+	margin-top: 0px;
+	text-align: center;
+	line-height: 1.8rem;
+	height: auto;
+	/* margin-bottom: 0.5rem;
+	* width: 100%;*/
+}
+.innSpace .gtkInfoBar {
+	margin: -0.8rem;
+	margin-bottom: 0.5rem;
+}
+.gtkActionBar:empty, .gtkInfoBar:empty {
+	/*display: none;*/
+	margin-bottom: 0px;
+	padding: 0px;
+	visibility: hidden;
+}
+
+.gtkSearchBox {
+	text-align: center;
+	margin: 0.5em auto;
+}
+.gtkActionBar p, .gtkInfoBar > p {
+	color: #000;
+	display: inline-block;
+	font-size: 1rem;
+	padding: 0px 0.5rem;
+}
+.gtkInfoBar > .errorTx { color: #da2f29; }
+.gtkInfoBar > .alertTx { color: #ffd800; }
+.gtkInfoBar > .infoTx { color: #4776b1;/*0b3a6b;*/ }
+.gtkInfoBar > .successTx { color: #247f24; }
+.gtkInfoBar > .errorTx, .gtkInfoBar > .alertTx, .gtkInfoBar > .infoTx, .gtkInfoBar > .successTx {
+	padding: 0px 0.6rem;
+}
+.gtkInfoBar > .errorBx, .gtkInfoBar > .alertBx, .gtkInfoBar > .infoBx, .gtkInfoBar > .successBx {
+	border: solid 2px #808080;
+	border-left: solid 0.4rem #808080;
+	border-right: solid 0.4rem #808080;
+	background-color: #fff;
+	color: #404040;
+	padding: 0px 0.5rem;
+}
+.gtkInfoBar > .errorBx { border-color: #da2f29; }
+.gtkInfoBar > .alertBx { border-color: #ffd800; }
+.gtkInfoBar > .infoBx { border-radius: 0.3rem; border-color: #4776b1;/*0b3a6b;*/ }
+.gtkInfoBar > .successBx {  border-radius: 0.3rem; border-color: #247f24; }
+.msgInfo, .msgSuccess, .msgAlert, .msgError, .errorTx, .alertTx, .infoTx, .successTx {	display: inline-block; }
+.blk, .gtkInfoBar > .blk {
+	display: block !important;
+}
+.gtkStatusBar {
+	background: #c3c6c5;
+	font-size: 1.0rem;
+	padding: 0.5rem;
+	margin: 0px;
+	text-align: center;
+	line-height: 1.8rem;
+	height: 2rem;
+}
+.gtkStatusBar p {
+	display: inline-block;
+	font-size: 1rem;
+	line-height: 1.8rem;
+}
+.gtkStatusBar:empty {
+	/*display: none;*/
+	margin-bottom: 0px;
+	padding: 0px;
+}
+.empty {
+	border: solid 0px #fff;
+	padding: 0px;
+}
+/* ### ### ### ### ### */
+/* Stack Switch ( A ][ B ) */
+/* ### ### ### ### ### */
+.gtkStackSw {
+	display: inline-block;
+}
+.gtkStackSw a {
+	border-radius: 0px !important;
+	vertical-align: top;
+}
+.gtkStackSw a:first-child, .gtkStackSw .gtkRadioBtn:first-child + label.gtkBtn {
+	border-radius: 4px 0px 0px 4px !important;
+}
+.gtkStackSw a:last-child {
+	border-radius: 0px 4px 4px 0px !important;
+	border-right: solid 1px #B6B6B3;
+}
+.gtkStackSw .gtkBtn {
+	border-radius: 0px;
+	/*border: solid 1px #B6B6B3 !important;
+	border-bottom: solid 1px #91918c !important;*/
+	border-right: solid 0px #B6B6B3;
+	color: #000;
+	cursor: grab;
+	font-size: 1.0rem;
+	font-weight: 300;
+	line-height: 1.2rem;
+	height: 1.2rem;
+	margin: 0px;
+	padding: 0.3rem 1.0rem;
+	min-width: 100px;
+}
+.gtkBtn.selected, .gtkButton.selected {
+	background: #d9d9d7;
+	border: solid 1px #B6B6B3 !important;
+	font-weight: 400;
+}
+.gtkStackSw .gtkBtn.selected,
+.gtkStackSw .gtkRadioBtn:checked + label.gtkBtn {
+	background: #d9d9d7;/*-image: linear-gradient(180deg,rgb(237,237,237),rgb(237,237,237)) !important;*/
+	border-top: solid 1px #808080 !important;
+	border-left: solid 1px #808080 !important;
+	border-bottom: solid 1px #808080 !important;
+	/*color: #404040 !important;*/
+	font-weight: 400;
+}
+.gtkStackSw .gtkBtn.selected:last-child,
+.gtkStackSw .gtkRadioBtn:last-child:checked + label.gtkBtn {
+	background: #d9d9d7;/*-image: linear-gradient(180deg,rgb(237,237,237),rgb(237,237,237)) !important;*/
+	border-top: solid 1px #808080 !important;
+	border-left: solid 1px #B6B6B3 !important;
+	border-right: solid 1px #808080 !important;
+	border-bottom: solid 1px #808080 !important;
+	/*color: #404040 !important;*/
+	font-weight: 400;
+}
+.gtkStackSw > .gtkRadioBtn:checked + label.gtkBtn:last-child {
+	border-left: solid 1px #B6B6B3 !important;
+	border-right: solid 1px #808080;
+	/*outline: solid 2px red;*/
+}
+.gtkStackSw + section {
+	background-color: white;
+	min-height: 100px;
+}
+/* ### ### #### ### ### */
+/* 		SideBar			*/
+/* ### ### #### ### ### */
+.gtkSideBar {
+	background-color: #fff;
+	border: solid 1px #c3c6c5;
+	margin: 0px;
+	text-align: center;
+}
+.gtkSideBar > ul, .gtkSideBar .sideBar, .gtkSideBar .sideBar > ul {
+	background-color: #fff;
+	border: solid 0px #c3c6c5;
+	border-right: solid 1px #e3e3e3;
+	color: #808080;
+	clear: none;
+	display: inline-block;
+	float: left;
+	list-style-type: none; 
+	margin: 0px;
+	padding: 0px;
+	min-width: 20%;
+}
+	.gtkSideBar > ul + section,	.gtkSideBar .sideBar + section {
+		text-align: center;
+		margin: 0px;
+	}
+.gtkSideBar > ul li, .gtkSideBar .sideBar li {
+	background-color: #fff;
+	border-bottom: solid 0px #e3e3e3;
+	color: #808080;
+	font-size: 1.1rem;
+	line-height: 1.2rem;
+	padding: 0.5rem 1rem;
+}
+.gtkSideBar > ul li:last-child, .gtkSideBar .sideBar li:last-child {
+	border-bottom: solid 0px #fff;
+}
+.gtkSideBar > ul > li:last-child, .gtkSideBar .sideBar > li:last-child {
+	border-bottom: solid 0px #e3e3e3;
+}
+.gtkSideBar > ul li > a, .gtkSideBar > ul li .lstItem, .gtkSideBar > ul li .lstItem a,
+.gtkSideBar .sideBar li > a, .gtkSideBar .sideBar li .lstItem, .gtkSideBar .sideBar li .lstItem a {
+	color: #000;
+	display: inline-block;
+	text-decoration: none;
+	margin: -0.5rem -1rem;
+	padding: 0.5rem 1rem;
+}
+.gtkSideBar > ul.bigLabels > li, .gtkSideBar > ul.bigLabels > li a, .gtkSideBar > ul.bigLabels > ul > li a {
+	padding: 0.8rem 1rem;
+}
+.gtkSideBar > ul.bigLabels > li a {
+	margin: -0.8rem -1rem;
+}
+.gtkSideBar > ul li > a {
+	display: block;
+}
+.gtkSideBar20to80 .gtkHbarSeparator, .gtkSideBar20to80 .gtkSideBar > ul { 	width: 20%; }
+.gtkSideBar20to80 .gtkSideBar > ul + section {	width: 75%; }
+.gtkSideBar30to70 .gtkHbarSeparator, .gtkSideBar30to70 .gtkSideBar > ul {	width: 30%; }
+.gtkSideBar30to70 .gtkSideBar > ul + section {	width: 65%; }
+.gtkSideBar40to60 .gtkHbarSeparator, .gtkSideBar40to60 .gtkSideBar > ul {	width: 40%; }
+.gtkSideBar40to60 .gtkSideBar > ul + section {	width: 55%; }
+/* ### ### ### ### ### */
+/* ListView && TreeView*/
+/* ### ### ### ### ### */
+.gtkListBox,  h3.gtkListBox, .gtkTreeView {
+	background-color: #fff;
+	border: solid 1px #c3c6c5;
+	border-bottom: solid 0px #c3c6c5;
+	border-radius: 0px;
+	color: #606060;
+	display: block;
+	font-size: 1.1rem;
+	line-height: 1.2rem;
+	padding: 0rem;/*0.5rem 0.5rem;*/
+	margin: 0rem 0rem;
+}
+.gtkListBox {
+	border-bottom: solid 1px #c3c6c5;
+}
+.gtkListBox > h3 {
+	border: solid 0px #c3c6c5;
+	border-bottom: solid 1px #c3c6c5;
+	padding: 0.5rem 0.5rem;
+}
+ul.gtkListBox, .gtkListBox ul, .gtkComboBox ul.gtkListBox {
+	border: solid 1px #c3c6c5;
+	margin: 0.5rem;
+}
+.gtkComboBox ul.gtkListBox {
+	margin-top: 0rem;
+	z-index: 10;
+}
+.gtkListBox ul {
+	/*margin: 0px !important;*/
+	margin-bottom: 1em;
+	float: none;
+}
+.gtkListBox > h3, .gtkListBox > ul > li, .gtkComboBox ul.gtkListBox > li, .gtkListBox .sideBar > li {
+	color: #606060;
+	padding: 0.5rem 1rem;
+}
+	.gtkListBox > li > label, .gtkListBox > ul > li > label {
+		color: #404040;
+		height: 2em;
+		padding-top: 0.3em;
+		padding-bottom: 0.3em;
+	}
+.gtkListBox > ul li > a,
+.gtkListBox > ul li > label,
+.gtkListBox > ul li > label:not(.active) > a,
+.gtkComboBox ul.gtkListBox li > a/*,
+.gtkSideBar > ul li .gtkBox.lstItem*/ {
+	color: #000;
+	text-decoration: none;
+	margin: -0.3rem -1rem;
+	padding: 0.3rem 1rem;
+}
+/* ### ### #### ### ### */
+/*  # hover && focus #  */
+/* 		SideBar			*/
+/* ListView && TreeView */
+.gtkSideBar > ul li a:hover, .gtkSideBar > ul li a:focus,
+.gtkSideBar .sideBar li a:hover, .gtkSideBar .sideBar li a:focus,
+.gtkSideBar > ul li .gtkBox.lstItem:hover, .gtkSideBar > ul li .gtkBox.lstItem:focus,
+.gtkSideBar .sideBar li .gtkBox.lstItem:hover, .gtkSideBar .sideBar li .gtkBox.lstItem:focus {
+	background-color: #f5f5f5;
+}
+.gtkListBox > ul li .active,
+.gtkSideBar > ul li a.active,
+.gtkListBox > ul li .active:hover,
+.gtkSideBar > ul li a.active:hover,
+.gtkListBox > ul li .active:focus,
+.gtkSideBar > ul li a.active:focus,
+.gtkComboBox .gtkListBox li a:hover,
+.gtkComboBox .gtkListBox li a:focus {
+	background-color: #4a90d9;
+	background-image: initial !important;
+	color: #fff;
+}
+.gtkListBox > ul li .active:hover,
+.gtkSideBar > ul li a.active:hover,
+.gtkListBox > ul li .active:focus,
+.gtkSideBar > ul li a.active:focus {
+	background-color: #4787c9;
+}
+
+/* Gdzie i kiedy? */
+	.gtkListBox li [class*="gtkListItem"] {
+		padding: 0px !important;
+		background-color: red;
+	}
+.gtkListBox > ul, .gtkListBox + ul,
+.gtkTreeView ul,
+.gtkComboBox .gtkListBox, .gtkNotebook .gtkListBox,
+.gtkNotebook > ul + div > .gtkListBox {
+	border: solid 0px #c3c6c5;
+	/*margin: 0.5em 1em;*/
+	margin: 0em;
+	margin-bottom: 0.5rem;
+	padding: 0px;
+	list-style-type: none; 
+}
+.gtkListBox > ul {
+	margin-bottom: 0rem;
+}
+.gtkListBox + ul > li, .gtkTreeView ul > li, .gtkNotebook .gtkListBox > li {
+	background-color: #fff;
+	border-bottom: solid 0px #e3e3e3;
+	font-size: 1.1rem;
+	padding: 0.2em 0.8em;
+}
+.gtkNotebook .gtkListBox > li {
+	border-bottom: solid 0px #e3e3e3;
+}
+.gtkListBox + ul li a, .gtkTreeView > ul li a {
+	color: #000;
+	display: inline-block;
+	text-decoration: none;
+	padding: 0.65em 0em;
+}
+.gtkListBox > ul li:hover, .gtkListBox > ul li:focus,
+.gtkListBox + ul li:hover, .gtkListBox + ul li:focus,
+.gtkTreeView ul li:hover, .gtkTreeView ul li:focus,
+table.gtkTreeView tr:hover, table.gtkTreeView tr:focus,
+.gtkNotebook .gtkListBox li:hover, .gtkNotebook .gtkListBox li:focus {
+	background-color: #f5f5f5;
+}
+.gtkListBox + ul li:last-child,
+.gtkTreeView > ul li:last-child {
+	border-bottom: solid 0px #fff;
+}
+.gtkTreeView {
+	display: table;
+	padding: 0px;
+	border: solid 1px #c3c6c5;
+	border-collapse: collapse;
+	/*table-layout: fixed;*/
+	width: 100%;
+}
+.gtkTreeView > ul {
+	border: solid 0px #c3c6c5;
+	display: table;
+	margin-bottom: 0.2rem;
+	width: 100%;
+}
+.gtkTreeView ul li {
+	display: table-row;
+	border-bottom: solid 0px #e3e3e3;
+	width: 100%;
+}
+.gtkTreeView > ul > li {
+}
+.gtkTreeView li > a,
+table.gtkTreeView tr > th {
+	border: solid 0px #c3c6c5;
+	border-right: solid 1px #e3e3e3;
+}
+.gtkTreeView li > a:last-child,
+table.gtkTreeView tr > th:last-child {
+	border-right: solid 0px #c3c6c5;
+}
+.gtkTreeView li > div {	display: table-cell;}
+.gtkTreeView li > div,
+table.gtkTreeView tr > td {	padding: 0.2rem 0.4rem;}
+table.gtkTreeView tr:first-child > td {	padding: 0px;}
+.gtkTreeView > ul > li:first-child, table.gtkTreeView tr > th {	border-bottom: solid 1px #e3e3e3;}
+.gtkTreeView li:first-child > a,
+table.gtkTreeView tr:first-child > th > a {
+	color: #808080;
+	display: table-cell;
+	font-weight: 800;
+	text-decoration: none;
+	padding:  0.5rem;
+}
+.gtkTreeView li > a:focus,.gtkTreeView li > a:hover {
+	color: #404040;
+}
+.gtkTreeView li > a.asc:after {
+	content: 'â˛';
+}
+.gtkTreeView li > a.desc:after {
+	content: 'âź';
+}
+.gtkTreeView li > a.asc:after, .gtkTreeView li > a.desc:after {
+	display: inline-block;
+	float: right;
+	font-size: 0.8rem;
+	line-height: 1rem;
+	text-align: right;
+}
+.dspGrid td {
+	border: solid 1px #e3e3e3;/*#c3c6c5;*/
+}
+/* ### ### ### ### ### */
+/* Buttons && Labels */
+/* ### ### ### ### ### */
+.gtkBtn, .gtkFlatBtn, .gtkButton, .gtkLabel, .gtkComboBox, .gtkComboBox > options {
+	color: #000;
+	display: inline-block;
+	text-align: center;
+	text-decoration: none;
+	font-size: 1.1rem;
+	line-height: 1.2rem;
+	height: 1.2rem;
+	min-width: 1.2rem;
+	padding: 0.3rem;
+	margin: 0px 0.3rem;
+	vertical-align: middle;
+	width: auto;
+}
+.gtkBtn, .gtkFlatBtn, .gtkButton {
+	/*font-size: 1rem;}
+.gtkBtn, .gtkFlatBtn {*/
+	font-size: 1.0rem;
+	line-height: 1.1rem;
+	font-weight: 300;
+}
+input[type='submit'].gtkBtn, input[type='submit'].gtkFlatBtn, input[type='submit'].gtkButton {
+	height: auto;
+}
+.gtkLabel {
+	margin: 0px;
+}
+.gtkEntry + .gtkBtn, .gtkEntry + .gtkBtn + .gtkBtn, .gtkLabel + * {
+	margin-left: 0px;
+	margin-right: 0px;
+}
+.gtkLabel + * {
+	/*float: right; nie mogÄ narzucaÄ RIGHT dla wszystkich elementĂłw */
+}
+.gtkBtn {
+	width: 1.2rem;
+}
+.gtkBtn, .gtkButton, .gtkFlatBtn {	color: #000 !important;	}
+.gtkFlatBtn {
+	background: initial;
+	background-color: initial;
+	background-image: initial;
+	margin: 0px 1px;
+	margin-top: 1px;
+	border-width: 0px;
+border-radius: 0px;
+}
+.gtkFlatBtn:focus, .gtkFlatBtn:hover {
+	margin: 0px;
+}
+.gtkBtn, .gtkButton, /*.gtkLabel,*/
+.gtkFlatBtn:focus, .gtkFlatBtn:hover,
+.gtkComboBox:focus > .gtkFlatBtn, .gtkComboBox:hover > .gtkFlatBtn {
+	background-color: #c3c6c5;
+	background-image: linear-gradient(180deg,rgb(237,237,237),#c3c6c5);
+	border-style: solid;
+	border-color: #B6B6B3;
+	border-width: 1px;
+	border-bottom: solid 1px #91918c;
+	border-radius: 0.3rem;
+	font-style: normal;
+	vertical-align: top;
+}
+.gtkFlatBtn:focus, .gtkFlatBtn:hover {
+	background-color: #c3c6c5;
+	background-image: linear-gradient( 180deg,#f4f4f4 , #e5e8e7 80% );
+	margin: 0px;
+	/*margin-top: 2px;*/
+}
+.gtkComboBox:focus > .gtkFlatBtn, .gtkComboBox:hover > .gtkFlatBtn {
+	background-color: #d9d9d7;
+	background-image: none;
+}
+.gtkBtn:focus, .gtkBtn:hover,
+.gtkButton:focus, .gtkButton:hover
+/* .gtkLabel:focus, .gtkLabel:hover*/ {
+	background-image: linear-gradient( 180deg, rgb(237,237,237), rgb(237,237,237) ) !important;
+}
+.gtkButton {
+}
+.gtkSubmit, .btnSubmit {
+	background-color: #5682b7;
+	background-image: linear-gradient(180deg,#6f9ccd,#4776b1);
+	color: #fff !important;
+	height: auto; /* height: 1.2rem z gtkButton zmniejsza !!! */
+}
+.gtkSubmit:focus, .gtkSubmit:hover,
+.btnSubmit:focus, .btnSubmit:hover {
+	background-color: #6f9ccd;
+	background-image: linear-gradient(180deg,#6f9ccd,#6f9ccd) !important;
+}
+/* ### ### ### ### ### */
+/* ComboBox */
+/* ### ### ### ### ### */
+.gtkComboBox {
+	padding: 0px;
+	vertical-align: top;
+}
+.gtkComboBox a span:after {
+	content: " âž ";
+}
+.gtkComboBox a + div,
+.gtkComboBox a + ul,
+.gtkComboBox a + .dropDwnList {
+	display: none;
+	text-align: center;
+}
+.gtkComboBox a:focus + div, .gtkComboBox a:hover + div,
+.gtkComboBox a + div:focus, .gtkComboBox a + div:hover,
+.gtkComboBox a:focus + ul, .gtkComboBox a:hover + ul,
+.gtkComboBox a + ul:focus, .gtkComboBox a + ul:hover,
+.gtkComboBox a:focus + .dropDwnList, .gtkComboBox a:hover + .dropDwnList,
+.gtkComboBox a + .dropDwnList:focus, .gtkComboBox a + .dropDwnList:hover {
+	display: block;
+	position: relative;
+}
+select.gtkComboBox {
+	border: solid 3px #5682b7;
+	border-radius: 5px;
+	vertical-align: top;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	height: 2rem;
+}
+.gtkComboBox > options {
+	height: 1rem;
+}
+.gtkComboBox:selected {
+	border: solid 3px red !important;
+}
+/* ### ### ### ### ### */
+/* ColorChooserDialog - ColorPicker */
+/* ### ### ### ### ### */
+.gtkColorPicker {
+	position: relative;
+	height: 45px;
+	width: 60px;
+}
+.gtkColorPicker > label {
+	display: block;
+	font-size: 0em;
+	line-height: 0em;
+	/*font-size: 1.4em;
+	line-height: 1.8em;
+	font-weight: 800;
+	height: 1.6em;
+	vertical-align: top;*/
+}
+.gtkColorPicker > label + div {
+	background-color: #e5e8e7;
+	border: solid 1px #808080;
+	border-radius: 5px;
+	position: relative;
+	display: inline-block;
+	font-size: 1.4em;
+	padding: 0.1em;
+	height: 1.6em;
+	width: 2.3em;
+	overflow: hidden;
+	vertical-align: top;
+}
+.gtkColorPicker > label + div > input {
+	display: none;
+}
+.gtkColorPicker > label + div > input + label {
+	background-color: var(--picker-color);
+	border: solid 1px #808080;
+	border-radius: 5px;
+	display: none;
+	font-size: 1em;
+	line-height: 1.3em;
+	text-align: center;
+	margin: 0.1em;
+	height: 1.3em;
+	width: 2em;
+	vertical-align: top;
+}
+.gtkColorPicker > label + div > input + label + div {
+	color: #000;
+	display: inline-block;
+	font-size: 1em;
+	line-height: 1em;
+	text-align: center;
+	height: 2em;
+	width: 2em;
+}
+.gtkColorPicker > label + div:hover {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: auto;/*4.8em;*/
+	width: 6.9em;
+}
+.gtkColorPicker:hover > label + div > input + label,
+.gtkColorPicker > label + div:hover > input + label,
+.gtkColorPicker > label + div > input:checked + label {
+	border-radius: 0px;
+	border-color: var(--picker-color);
+	display: block;
+	float: left;
+}
+.gtkColorPicker:hover > label + div > input + label,
+.gtkColorPicker:hover > label + div:hover > input + label {
+	border: solid 1px #808080;
+}
+.gtkColorPicker:hover > label + div > input + label:hover,
+.gtkColorPicker > label + div > input + label:hover {
+	border: solid 1px #404040;
+}
+.gtkColorPicker > label + div:hover > input:checked + label > div:after {
+	content: 'â';
+}
+.gtkColorPicker > label + div:hover > .rndBox + label {
+	border-radius: 5px 5px 0px 0px;
+}
+.gtkColorPicker > label + div:hover > .sqrBox + label {
+	border-radius: 0px;
+}
+.gtkColorPicker > label + div:hover > .endBox + label {
+	border-radius: 0px 0px 5px 5px;
+}
+/* ### ### ### ### ### */
+/* Frame - Fieldset */
+/* ### ### ### ### ### */
+.gtkFrame {
+	border: solid 1px #A7ABA7;
+	padding: 0.5rem;
+	margin: 0.2rem;
+}
+
+/* ### ### ### ### ### */
+/* TABS (notebook)*/
+/* ### ### ### ### ### */
+.gtkNotebook {
+	background-color: #e5e8e7;
+	margin: 0px;
+}
+.gtkNotebook > ul {
+	background-color: #DADAD8;
+	border: solid 1px #a7aba7;
+	font-size: 1.0rem;
+	margin: 0px;
+	/*
+	* border-bottom: solid 0px #a7aba7;
+	* margin-bottom: -1px;
+	* padding-top: 2px;*/
+	padding: 0px;
+	padding-left: 0px;
+	min-height: 2em;
+	text-align: center;
+}
+.gtkHeaderBar + .gtkNotebook > ul {
+	border: solid 0px #a7aba7;
+	border-bottom: solid 1px #a7aba7;
+}
+.gtkNotebook > ul li {
+	color: #808080;
+	display: inline-block;
+	vertical-align: sub;
+}
+.gtkNotebook > ul li a {
+	border-bottom: solid 3px initial;
+	color: #808080;
+	font-weight: 600;
+	padding: 0.5rem 1.5rem 0.3rem 1.5rem;
+	text-decoration: none;
+}
+.gtkNotebook > ul li .active,
+.gtkNotebook > ul li a.active:hover,
+.gtkNotebook > ul li a.active:focus {
+	background-color: initial !important;
+	background-image: initial !important;
+	border-bottom: solid 0.25rem #4a90d9;
+	color: #000;
+	font-weight: 800;
+}
+.gtkNotebook > ul li a:hover,
+.gtkNotebook > ul li a:focus {
+	border-bottom: solid 0.25rem #a7aba7;
+	color: #404040;
+	text-decoration: none;
+}
+.gtkNotebook ul + div {
+	background-color: #fff;
+	border: solid 1px #a7aba7;
+	border-top: solid 0px #a7aba7;
+	font-size: 1.2rem;
+	text-align: center;
+	padding: 0.8rem;
+	min-height: 100px;
+}
+.gtkHeaderBar + .gtkNotebook > ul + div {
+	border: solid 0px #a7aba7;
+	/*border-top: solid 1px #a7aba7;*/
+}
+/* ### ### ### ### ### */
+/* Tabbed view using Buttons */
+/* ### ### ### ### ### */
+.gtkStackSw {
+	display: inline-block;
+}
+.gtkStackSw a {
+	border-radius: 0px !important;
+	vertical-align: top;
+}
+.gtkStackSw > a:first-child, .gtkStackSw > label:first-child {
+	border-radius: 4px 0px 0px 4px !important;
+}
+.gtkStackSw > a:last-child, .gtkStackSw > label:last-child {
+	border-radius: 0px 4px 4px 0px !important;
+	border-right: solid 1px #B6B6B3;
+}
+	.gtkStackSw .gBtn {
+		border-radius: 0px;
+		/*border: solid 1px #B6B6B3 !important;
+		border-bottom: solid 1px #91918c !important;*/
+		border-right: solid 0px #B6B6B3;
+		font-size: 1.6em !important;
+		font-weight: 100 !important;
+		line-height: 1.4em !important;
+		height: 1.4em !important;	/*24*/
+		margin: 0.1em 0px !important;
+		min-width: 100px;
+	}
+	.gtkStackSw .aBtn.selected {
+		background: #d9d9d7;/*-image: linear-gradient(180deg,rgb(237,237,237),rgb(237,237,237)) !important;*/
+		border-top: solid 1px #808080 !important;
+		border-left: solid 1px #808080 !important;
+		border-bottom: solid 1px #808080 !important;
+		color: #404040 !important;
+	}
+	.gtkStackSw .aBtn.selected:last-child {
+		background: #d9d9d7;/*-image: linear-gradient(180deg,rgb(237,237,237),rgb(237,237,237)) !important;*/
+		border-top: solid 1px #808080 !important;
+		border-left: solid 1px #B6B6B3 !important;
+		border-right: solid 1px #808080 !important;
+		border-bottom: solid 1px #808080 !important;
+		color: #404040 !important;
+	}
+/* ### ### ### ### ### */
+/* Checkbox && Radios */
+/* ### ### ### ### ### */
+.gtkCheckBtn, .gtkRadioBtn {
+	display: none !important;
+}
+*:not(.gtkStackSw) > .gtkCheckBtn + label:before,
+*:not(.gtkStackSw) > .gtkRadioBtn + label:before {
+	background-color: #c3c6c5;
+	background-image: linear-gradient( 180deg,#f4f4f4 , #e5e8e7 80% );
+	border: solid 1px #B6B6B3;
+	border-radius: 35%;
+	color: #000;
+	content: ' ';
+	display: inline-block;
+	font-size: 1rem;
+	font-weight: 800 !important;
+	margin: 0px 0px 0.2rem 0px;
+	margin-right: 0.6rem;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 1rem;
+	height: 1rem;
+	width: 1rem;
+}
+*:not(.gtkStackSw) > .gtkRadioBtn + label:before {
+	border-radius: 50%;
+}
+.gtkCheckBtn:checked + label:before {
+	content: 'â';
+	font-size: 1.4rem;
+}
+.gtkCheckBtn.chkBoxNo:checked + label:before {
+	content: '-';
+	line-height: 0.8rem;
+}
+*:not(.gtkStackSw) > .gtkRadioBtn:checked + label:before {
+	content: 'â˘';
+	font-size: 0.9rem;
+	line-height: 0.9rem;
+}
+/* ### ### ### ### ### */
+/* Switch && Label check */
+/* ### ### ### ### ### */
+.gtkLabel, .gtkLabelLine, .gtkLabelCateg, .gtkFrameLabel {
+	display: inline-block;
+	font-size: 1.0rem;
+	line-height: 1.3rem;
+	height: 1.4rem;
+	/*margin-bottom: 0.5rem; zaburza LABEL np. w ActionBar */
+	/*padding: 5px 2px 5px 2px;*/
+	padding-left: 0px;
+	padding-right: 0px;
+	text-align: left;
+	vertical-align: middle;
+	width: 50%;
+}
+div.gtkBox .gtkLabel {
+	width: auto;
+}
+.gtkLabelLine {
+	display: block;
+	font-size: 1.0rem;
+	line-height: 1.3rem;
+	height: 2rem;/*1.7rem;/*1.3rem*/
+	padding: 0.3rem 0px;
+	padding-top: 0px;
+	width: 100%;
+}
+.gtkLabelCateg {
+	display: block;
+	font-weight: 800;
+	padding: 0.3rem 0px;
+	width: 100%;
+}
+.gtkFrameLabel {
+	font-weight: 700;
+	padding: 0px 0.2rem;
+	width: auto;
+}
+.w10r {
+	width: 10rem;
+}
+/*.gtkLabelLine > input, .gtkLabel + input,*/
+.gtkSwitch {
+	/*float: right; nie mogÄ narzucaÄ RIGHT dla wszystkich elementĂłw */
+	margin-top: 5px;
+}
+.gtkSwitch > input {
+	display: none;
+}
+.gtkSwitch > input + div {
+	background-color: #c3c6c5;/* cecece */
+	border: solid 1px #999;
+	border-radius: 3px;
+	cursor: grab;
+	display: inline-block;
+	/*float: right; nie mogÄ narzucaÄ RIGHT dla wszystkich elementĂłw */
+	height: 20px;
+	width: 62px;
+	vertical-align: middle;
+}
+.gtkSwitch > input:checked + div {
+	border-color: #015294;
+	background-color: #4a90d9;
+}
+.gtkSwitch > input + div:before, .gtkSwitch > input + div:after {
+	border-radius: 3px;
+	color: #000;
+	display: inline-block;
+	text-align: center;
+	font-size: 12px;
+	line-height: 16px;
+	height: 20px;
+	width: 30px;
+	vertical-align: top;
+}
+/*.gtkSwitch.gtkSwYesNo + div:before:hover:after {
+	content: 'Nie';
+}
+.gtkSwitch.gtkSwYesNo + div:hover:after:before {
+	content: 'Tak';
+	display: block;
+	height: 30px;
+	width: 30px;
+}*/
+.gtkSwitch > input + div:before {
+	content: ' ';
+	box-shadow: #999 0px 1px 1px;
+}
+.gtkSwitch > input + div:after {
+	content: 'âŻ';/*â';âŻ*/
+}
+.gtkSwitch > input + div:before {
+	background: linear-gradient(180deg, #f4f4f4, #e7e7e7);/*#e5e8e7;*/
+	border-right: solid 1px #999;
+}
+.gtkSwitch > input:checked + div:before {
+	background: initial;
+	border-right: none;
+	color: #fff;
+	content: '|';
+	box-shadow: none;
+}
+.gtkSwitch > input:checked + div:after {
+	border-left: solid 1px #015294;
+	background: linear-gradient(180deg, #f4f4f4, #e7e7e7);
+	content: '';
+	box-shadow: #808080 1px 1px 1px;
+}
+/* ### ### ### ### ### */
+/* Input text && inpBtns[-+] */
+/* ### ### ### ### ### */
+.gtkLabel, .gtkLabelLine {
+	/*outline: solid 1px red;*/
+}
+.gtkEntry {
+	border: double 1px #c3c6c5;
+	border-radius: 3px;
+	/*float: right;*/
+	font-size: 1.1rem;
+	line-height: 1.4rem;
+	/*margin-top: -1px;*/
+	margin: 0px 1px 1px 1px;
+	padding: 0.3rem 0.3rem 0.2rem 0.3rem;
+	min-height: 1rem;
+	width: 6rem;
+}
+.gtkEntry:focus {
+	border: solid 2px #4a90d9;
+	margin: -1px 0px 0px 0px;
+}
+.gtkSpinButton {
+	float: right;
+}
+.gtkSpinButton > .gtkEntry {
+	/*border: solid 1px #c3c6c5;*/
+	border-right: solid 0px #e3e3e3 !important;
+	border-radius: 3px 0px 0px 3px !important;
+	float: none !important;
+	font-size: 1rem;
+	line-height: 1.2rem;
+	padding: 0.3rem;
+	margin-right: 0px;
+	height: 1.3rem;
+	width: 2.1rem;
+	/*margin-top: -0.3rem;*/
+}
+.gtkSpinButton .gtkBtn {
+	background-color: #fff;
+	background-image: initial;
+	border-top: solid 1px #c3c6c5;
+	border-left: solid 1px #e3e3e3;
+	border-right: solid 0px #e3e3e3;
+	border-bottom: solid 1px #c3c6c5;
+	border-radius: 0px;
+	color: #000;
+	display: inline-block;
+	text-align: center;
+	text-decoration: none;
+	font-size: 1.2rem;
+	font-weight: 800;
+	line-height: 1.2rem;
+	height: 1.3rem;
+	min-width: 1.3rem;
+	padding: 0.3rem;
+	/*margin-top: -1px;*/
+	vertical-align: top;
+	width: auto;
+}
+.gtkSpinButton .gtkBtn:focus, .gtkSpinButton .gtkBtn:hover {
+	background-color: #f4f4f4;
+}
+.gtkSpinButton .gtkBtn:last-child {
+	border-right: solid 1px #c3c6c5;
+	border-radius: 0px 3px 3px 0px;
+}
+.gtkSpinButton .gtkEntry + .gtkBtn, .gtkSpinButton .gtkEntry + .gtkBtn + .gtkBtn {
+	float: none;
+}
+.gtkSpinButton .gtkEntry:focus + .gtkBtn {
+	border-top: solid 2px #4a90d9;
+	border-bottom: solid 2px #4a90d9;
+	margin-top: -1px;
+	margin-bottom: 0px;
+}
+.gtkSpinButton .gtkEntry:focus ~ .gtkBtn:last-child {
+	border: solid 2px #4a90d9;
+	border-left: solid 1px #e3e3e3;
+	margin-top: -1px;
+	margin-bottom: 0px;
+}
+.gtkScrollNot { overflow: hidden; }
+.gtkScroll { overflow: scroll; }
+.gtkScrollX { overflow-x: scroll; }
+.gtkScrollY { overflow-y: scroll; }
+textarea.gtkScroll { resize: both; overflow: auto; }
+textarea.gtkScrollX { resize: horizontal; overflow-x: auto; }
+textarea.gtkScrollY { resize: vertical; overflow-y: auto; }
+/* ### ### ### ### ### */
+/* # Empty Screen / INTRO # */
+/* ### ### ### ### ### */
+.gtkIntro {
+	border: solid 0px #c3c6c5;
+	font-size: 1.6em;
+	text-align: center;
+	margin-top: 2%;
+}
+.gtkIntro img {
+	filter: invert(50%);
+	margin-bottom: 0.5em;
+}
+.gtkIntro:before {
+	position: relative;
+	top: 1.9rem;
+	color: #808080;
+	content: "x";
+	display: block;
+}
+.hiddenContent.gtkIntro:before {
+	content: '~';
+	/*text-decoration: underline;*/
+}
+.newContent.gtkIntro {
+	margin-top: -1%;
+}
+.newContent.gtkIntro:before {
+	content: '->';
+}
+.gtkIntro p {
+	color: #000;
+	font-weight: 400;
+	margin: 0px;
+}
+.gtkIntro p + ol,
+.gtkIntro p + ul {
+	display: inline-block;
+	list-style-type: none;
+	padding-left: 0px;
+	margin: 0.5em 0px;
+	width: auto;
+}
+.gtkIntro li > p {
+	display: inline-block;
+	width: auto;
+}
+body {
+	counter-reset: lis;
+}
+.autoIncrement p:before {
+	counter-increment: lis;
+	content: counter(lis) ". ";
+	color: #000;
+	display: inline-block;
+	float: left;
+}
+.gtkIntro p + p,
+.gtkIntro p + ol p,
+.gtkIntro p + ul p {
+	color: #404040;
+	font-style: italic;
+	font-size: 1.2rem;
+	font-weight: 300;
+	line-height: 1.1rem;
+	margin: 0px;
+}
+/* ### ### ### ### ### */
+/* # Specific Buttons # */
+/* ### ### ### ### ### */
+.btnReload {
+	/*width: 2rem;*/
+}
+.btnReload span:after {
+	content: "âť";
+}
+.btnBack span:after {
+	content: "âš";
+	font-size: 2rem;
+	font-weight: 400;
+	line-height: 0.6rem;
+}
+.btnPrev span:after {
+	content: "â¨â¨";
+}
+.btnNext span:after {
+	content: "âŠâŠ";
+}
+.btnsCombine { display: inline-block; vertical-align: top; }
+.btnsCombine .btnNext { margin-left: 0px; }
+.btnsCombine .btnPrev { margin-right: 0px; }
+.btnNext.last {
+	border-radius: 0px 0.3rem 0.3rem 0px;
+	border-left: solid 0px #000;
+	margin-left: 0px;
+}
+.btnPrev.frst {
+	border-radius: 0.3rem 0px 0px 0.3rem;
+	margin-right: 0px;
+}
+.btnDropDwn span:after {
+	content: " âž ";
+}
+.btnDownload span {
+	border-left: solid 2px #808080;
+	border-right: solid 2px #808080;
+	border-bottom: solid 2px #000;
+	border-radius: 0px 0px 3px 3px;
+	font-size: 5px;
+}
+.btnDownload span:after {
+	content: "â";
+	font-size: 20px;
+	padding: 0px 2px;
+}
+.btnAnnot span:after {
+	border: solid 2px #000;
+	border-top: dotted 2px #000;
+	border-radius: 0px 0px 3px 3px;
+	content: "âĄ";
+	color: #404040;
+	padding: 0px 2px;
+}
+.btnPhone:after {
+	content: "â";
+	color: #606060;
+	font-size: 1.2em;
+}
+.btnPhone.colGray:after {
+	color: #c3c6c5;
+}
+.btnClock:after {
+    border: solid 2px #808080;
+    border-radius: 12px;
+	content: "â";
+	display: block;
+    font-size: 20px;	
+    margin: 0px auto;
+    line-height: 12px;
+    letter-spacing: 0px;
+    text-indent: 0px;
+    text-shadow: initial;
+    padding: 0px;
+    height: 16px;
+    width: 16px;
+    word-wrap: break-word;
+    white-space: normal;
+}
+.btnCalend {
+	background-color: #5682b7;
+	background-image: linear-gradient(180deg,rgb(237,237,237),#c3c6c5);
+	border-style: solid;
+	border-color: #808080;
+	border-width: 1px;
+	border-radius: 4px;
+	color: #000;
+	display: inline-block;
+	/*font-size: 14px;*/
+	font-style: normal;
+	text-align: center;
+	text-decoration: none;
+	text-shadow: 0px 0px 1px #404040;
+	/*padding: 5px;
+	/*margin-left: 5px;
+	margin-right: 8px;
+	
+	/*line-height: 18px;
+	/*height: 24px;
+	width: 24px;*/
+	vertical-align: top;
+}
+.btnCalend:after {
+    border: solid 1px #808080;
+    border-top: solid 3px #000;
+    content: "âťâťâť âťâźâź âźâźâť";
+    display: block;
+    font-size: 5px;
+    line-height: 5px;
+    letter-spacing: 1px;
+    text-shadow: initial;
+    margin: 0px auto;
+    margin-top: -1px;
+    padding-left: 2px;
+    padding-bottom: 2px;
+    word-wrap: break-word;
+    white-space: normal;
+    width: 1rem;
+}
+.btnApply span:after {
+	border: solid 2px #000;
+	border-top: solid 4px #808080;
+	border-radius: 0px 0px;
+	content: "â";
+	padding: 0px 2px;
+}
+.btnEdit span:after {
+	border: solid 1px #c3c6c5;
+	border-bottom: solid 2px #808080;
+	content: "Eâ";
+	text-decoration: underline;
+}
+.btnParag span:after {
+	content: "Âś";
+}
+.btnProj span:after {
+	border: dashed 1px #808080;
+	content: " âĄ ";
+}
+.btnView:before {
+	content: " â˘ ";
+}
+.btnHelp {
+	font-size: 1.0rem;
+	font-weight: 400;
+	line-height: 1rem;
+	text-align: left;
+}
+.btnHelp:before {
+	content: "1 2";
+	display: inline-block;
+	font-size: 0.6rem;
+	line-height: 0.6rem;
+	text-align: center;
+	margin: 0px;
+    word-wrap: break-word;
+    white-space: normal;
+    width: 10px;
+    vertical-align: top;
+}
+.btnHelp span:after {
+	content: "?";
+	display: inline-block;
+	font-size: 1.2rem;
+	font-weight: 800;
+	line-height: 1.2rem;
+}
+.btnAction span:after {
+	border: solid 2px #808080;
+	border-radius: 0px 0px;
+	content: "â";
+	color: #000;
+	/*background-color: #c3c6c5;*/
+	display: block;
+	font-size: 2em;
+	line-height: 0.5em;
+	padding: 0px;
+}
+.btnSett {
+	font-size: 1.6rem;
+	font-weight: 400;
+	line-height: 1rem;
+}
+.btnSett:after {
+	content: "âĄ";
+}
+.btnNewWin span:after {
+	content: "â§";
+}
+.btnClose span:after {
+	content: "â¨Ż";
+	font-weight: 700;
+}
+.btnTrash span:after {
+	content: "â¨Ż";
+}
+.btnTrash:hover {
+	background-image: linear-gradient(180deg,#EB222C,#D10018) !important;
+	color: #fff;
+	font-weight: 800;
+	text-shadow: 0px -1px 1px #000;
+}
+.btnImp span {
+	border: solid 1px #000;
+	border-right: double 3px #000;
+	border-left: solid 0px #808080;
+	padding: 0px 0.2rem;
+}
+.btnExp span {
+	border: solid 1px #000;
+	border-left: double 3px #000;
+	border-right: solid 0px #808080;
+	padding: 0px 0.2rem;
+}
+
+.btnImp span:after, .btnExp span:after {
+	content: "âž";/*"â";*/
+}
+.switchBtns { display: none; }
+.switchBtns + .btnSwitch { display: inline-block; }
+.switchBtns + .btnSwitch .dspIfOff {	display: inline-block; }
+.switchBtns + .btnSwitch .dspIfOn {	display: none; }
+.switchBtns:checked + .btnSwitch .dspIfOff {	display: none; }
+.switchBtns:checked + .btnSwitch .dspIfOn {	display: inline-block; }
+/* ### ### ### ### ### */
+/* Elems Remover && Positioning */
+/* ### ### ### ### ### */
+.fullScrn {
+	border: 0px solid #808080;
+	border-radius: 0px;
+	margin: 0px;
+}
+/*.fullScrn > header {
+box-shadow: 0px 1px 0px #808080;
+}*/
+.fullScrn > header, .fullScrn > form > header {
+	border-radius: 0px;
+}
+.gtkWindow.innSpace {
+	border-radius: 0px 0px 10px 10px;
+}
+.innSpace	{ padding: 0.8rem !important;/*10px;*/ }
+.iSpcHor	{ padding: 0px 0.5rem !important; }
+.iSpcHorL	{ padding: 0px 0px 0px 0.5rem !important; }
+.iSpcHorR	{ padding: 0px 0.5rem 0px 0px !important; }
+.iSpcVer	{ padding: 0.5rem 0px !important; }
+.outSpace	{ margin: 0.8rem !important; }
+.oSpcHor	{ margin: 0px 0.5rem !important; }
+.oSpcHorL	{ margin: 0px 0px 0px 0.5rem !important; }
+.oSpcHorR	{ margin: 0px 0.5rem 0px 0px !important; }
+.oSpcVer	{ margin: 0.5rem 0px !important; }
+.NOinnSpace	{ padding: 0px !important; }
+.NOoutSpace	{ margin: 0px !important; }
+.putLeft	{ float: left; }
+.putRight	{ float: right !important; /* IMP bo MadFoems.css siÄ wpieprza*/ }
+.txtLeft	{ text-align: left; }
+.txtCenter	{ text-align: center; }
+.txtRight	{ text-align: right; }
+.gtkSeparator {
+	display: inline-block;
+	border-right: solid 1px #c3c6c5;
+	height: 2rem;
+	margin: 0px 0.3rem;
+	vertical-align: top;
+}
+.putLeft.gtkSeparator {
+	border-right: solid 1px #c3c6c5;
+	padding-right: 3rem;
+}
+.putRight.gtkSeparator {
+	border-left: solid 1px #c3c6c5;
+	padding-left: 3rem;
+}
+.gtkHbarSeparator {
+	height: 2.4rem;
+	margin-top: -0.4rem;
+	padding-top: 0.4rem;
+	text-align: left;
+}
+.putRight.gtkHbarSeparator {
+	border-left: solid 1px #c3c6c5;
+	padding-left: 0.4rem;
+}
+.putLeft.gtkHbarSeparator {
+	border-right: solid 1px #c3c6c5;
+	padding-right: 0.4rem;
+}
+.disbld, .disabled { color: #8D9090 !important; }
+input.disbld, input.disabled, input:disabled + label { cursor: not-allowed; }
+.gtkComboBox .disbld:hover, .gtkListBox .disbld:hover {	background-color: initial !important; }
+.disbld > span { border-color: #808080; }
+.gtkBtn.disbld, .gtkButton.disbld, .gtkEntry.disbld, .gtkSpinButton.disbld, .gtkLabel.disbld, .gtkLabelLine.disbld {
+	border: solid 1px #B6B6B3;
+	background-color: #f1f1f1;
+	background-image: initial;
+}
+.hidden, .noDsp { display: none; }
+[data-zone] { display: none; }
+.dspSect { display: block; }

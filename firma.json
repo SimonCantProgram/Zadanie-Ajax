@@ -1,0 +1,13 @@
+[
+	{ "imie":"Jolanta", "nazwisko":"Kręciwałek", "stanowisko":"spc. ds. Zamówień publicznych" },
+	{ "imie":"Brajanusz", "nazwisko":"Fachmann", "stanowisko":"spc. ds. Projektów Unijnych" },
+	{ "imie":"Miranda", "nazwisko":"Nieda", "stanowisko":"kier. gospodarczy" },
+	{ "imie":"Marta", "nazwisko":"Wcisnechłam", "stanowisko":"spc. ds. sprzedaży" },
+	{ "imie":"Jacek", "nazwisko":"Donos", "stanowisko":"spc. ds. kontroli i bezpieczeństwa" },
+	{ "imie":"Kazimierz", "nazwisko":"Staraszkoła", "stanowisko":"spc. ds. rozwoju" },
+	{ "imie":"Mariusz", "nazwisko":"Kreda", "stanowisko":"spc. ds. szkoleń" },
+	{ "imie":"Franciszek", "nazwisko":"Nierusz", "stanowisko":"spc. ds. technicznych" },
+	{ "imie":"Aldona", "nazwisko":"Kasybrak", "stanowisko":"spc. ds. finansowo-księgowych" },
+	{ "imie":"Barbara", "nazwisko":"Bezpamięci", "stanowisko":"spc. ds. planowania" },
+	{ "imie":"Mirosław", "nazwisko":"Wielepiej", "stanowisko":"spc. ds. doradztwa biznesowego" }
+]
